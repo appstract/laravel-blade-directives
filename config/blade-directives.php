@@ -6,6 +6,6 @@ return [
 
         // 'name' => function($expresion) {}
 
-    ]
+    ],
 
 ];
