@@ -1,0 +1,20 @@
+# Crap
+*.log
+.sass-cache
+.Spotlight-V100
+.Trashes
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+
+# IDE
+*.sublime-*
+*.idea
+.idea
+
+# Project
+build
+composer.lock
+docs
+vendor
