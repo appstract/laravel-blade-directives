@@ -2,8 +2,8 @@
 
 namespace Appstract\BladeDirectives;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\ServiceProvider;
 
 class BladeDirectivesServiceProvider extends ServiceProvider
 {
