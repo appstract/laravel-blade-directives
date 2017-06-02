@@ -14,7 +14,7 @@ class DirectivesRepository
      */
     public static function register($directives)
     {
-        collect($directives)->each(function($item, $key){
+        collect($directives)->each(function ($item, $key) {
             Blade::directive($key, $item);
         });
     }
@@ -27,7 +27,7 @@ class DirectivesRepository
      */
     public static function parseExpression($expression)
     {
-        return collect(explode(',', $expression))->map(function($item){
+        return collect(explode(',', $expression))->map(function ($item) {
             return trim($item);
         });
     }
