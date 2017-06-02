@@ -31,7 +31,7 @@ Then add the ServiceProvider to your `config/app.php` file:
 
 ## Usage
 
-```php
+```blade
 @istrue($variable)
     // Only show when set and true
 @endistrue
