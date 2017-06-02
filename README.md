@@ -23,7 +23,7 @@ Then add the ServiceProvider to your `config/app.php` file:
 'providers' => [
     ...
 
-    Appstract\Skeleton\BladeDirectivesServiceProvider::class
+    Appstract\BladeDirectives\BladeDirectivesServiceProvider::class
 
     ...
 ];
@@ -32,7 +32,9 @@ Then add the ServiceProvider to your `config/app.php` file:
 ## Usage
 
 ```php
-@istrue($variable) // Check if set && true
+@istrue($variable)
+    // Only show when set and true
+@endistrue
 ```
 
 ## Testing
@@ -47,11 +49,7 @@ Contributions are welcome, [thanks to y'all](https://github.com/appstract/larave
 
 ## About Appstract
 
-Appstract is a small team from The Netherlands. <3 Laravel, Vue and other awesome tools.
-
-## Buy Us A Beer
-
-Would be awesome if you would [buy us a beer](https://www.paypal.me/teamappstract/10)! Or [a lot of beer](https://www.patreon.com/appstract) :)
+Appstract is a small team from The Netherlands. We create (open source) tools for webdevelopment and write about related subjects on [Medium](https://medium.com/appstract). You can [follow us on Twitter](https://twitter.com/teamappstract), [buy us a beer](https://www.paypal.me/teamappstract/10) or [support us on Patreon](https://www.patreon.com/appstract).
 
 ## License
 
