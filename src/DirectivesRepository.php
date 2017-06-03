@@ -22,8 +22,8 @@ class DirectivesRepository
     /**
      * Parse expression.
      *
-     * @param  [type] $expression [description]
-     * @return [type]             [description]
+     * @param  string $expression
+     * @return \Illuminate\Support\Collection
      */
     public static function parseExpression($expression)
     {
