@@ -4,6 +4,12 @@ use Appstract\BladeDirectives\DirectivesRepository;
 
 return [
 
+    /*
+    |--------------------------------------------------------------------------
+    | @istrue
+    |--------------------------------------------------------------------------
+    */
+
     'istrue' => function ($expression) {
         if (str_contains($expression, ',')) {
             $expression = DirectivesRepository::parseExpression($expression);
@@ -20,6 +26,12 @@ return [
         return '<?php endif; ?>';
     },
 
+    /*
+    |--------------------------------------------------------------------------
+    | @if (extended)
+    |--------------------------------------------------------------------------
+    */
+
     'if' => function ($expression) {
         if (str_contains($expression, ',')) {
             $expression = DirectivesRepository::parseExpression($expression);
@@ -31,5 +43,19 @@ return [
 
         return "<?php if ({$expression}) : ?>";
     },
+
+    /*
+    |--------------------------------------------------------------------------
+    | @dump, @dd
+    |--------------------------------------------------------------------------
+    */
+
+    'dump' => function($expression) {
+        return "<?php dump({$expression}); ?>";
+    },
+
+    'dd' => function($expression) {
+        return "<?php dd({$expression}); ?>";
+    }
 
 ];
