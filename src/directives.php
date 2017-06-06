@@ -50,12 +50,12 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'dump' => function($expression) {
+    'dump' => function ($expression) {
         return "<?php dump({$expression}); ?>";
     },
 
-    'dd' => function($expression) {
+    'dd' => function ($expression) {
         return "<?php dd({$expression}); ?>";
-    }
+    },
 
 ];
