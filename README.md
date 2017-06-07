@@ -32,8 +32,9 @@ Then add the ServiceProvider to your `config/app.php` file:
 ## Usage
 
 ```blade
+// Only show when $variable isset and true
 @istrue($variable)
-    // Only show when $variable isset and true
+   This will be echoed
 @endistrue
  
 // or
