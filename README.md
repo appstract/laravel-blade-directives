@@ -5,7 +5,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/appstract/laravel-blade-directives/master.svg?style=flat-square)](https://travis-ci.org/appstract/laravel-blade-directives)
 
-Handy Blade directives.
+A collection of a few handy Blade directives.
 
 ## Installation
 
@@ -35,6 +35,11 @@ Then add the ServiceProvider to your `config/app.php` file:
 @istrue($variable)
     // Only show when set and true
 @endistrue
+```
+
+```blade
+@dump($var)
+@dd($var)
 ```
 
 ## Testing
