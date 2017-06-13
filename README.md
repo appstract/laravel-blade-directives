@@ -46,6 +46,24 @@ Then add the ServiceProvider to your `config/app.php` file:
 @dd($var)
 ```
 
+```blade
+@mix('/css/app.css')
+```
+Equivalent to:
+```
+<link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+```
+
+```blade
+@mix('/css/app.js')
+```
+
+Equivalent to:
+```
+<script src="{{ mix('/css/app.js') }}"></script>
+```
+
+
 ## Testing
 
 ```bash
