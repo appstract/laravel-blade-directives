@@ -50,7 +50,7 @@ return [
 
     'style' => function ($expression) {
         if (! empty($expression)) {
-            return '<link rel="stylesheet" href="'.$expression.'">';
+            return '<link rel="stylesheet" href="'.str_replace("'", '', $expression).'">';
         }
 
         return '<style>';
@@ -68,7 +68,7 @@ return [
 
     'script' => function ($expression) {
         if (! empty($expression)) {
-            return '<script src="'.$expression.'"></script>';
+            return '<script src="'.str_replace("'", '', $expression).'"></script>';
         }
 
         return '<script>';
