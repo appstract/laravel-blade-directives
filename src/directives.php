@@ -80,6 +80,38 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | @instanceof
+    |--------------------------------------------------------------------------
+    */
+
+    'instanceof' => function ($expression) {
+        $expression = DirectivesRepository::parseExpression($expression);
+
+        return  "<?php if ({$expression->get(0)} instanceof {$expression->get(1)}) : ?>";
+    },
+
+    'endinstanceof' => function () {
+        return '<?php endif; ?>';
+    },
+
+    /*
+    |--------------------------------------------------------------------------
+    | @typeof
+    |--------------------------------------------------------------------------
+    */
+
+    'typeof' => function ($expression) {
+        $expression = DirectivesRepository::parseExpression($expression);
+
+        return  "<?php if (gettype({$expression->get(0)}) == {$expression->get(1)}) : ?>";
+    },
+
+    'endtypeof' => function () {
+        return '<?php endif; ?>';
+    },
+
+    /*
+    |--------------------------------------------------------------------------
     | @dump, @dd
     |--------------------------------------------------------------------------
     */
