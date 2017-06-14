@@ -31,20 +31,31 @@ Then add the ServiceProvider to your `config/app.php` file:
 
 ## Usage
 
+### @istrue
+
+Only show when $variable isset and true
+
 ```blade
-// Only show when $variable isset and true
 @istrue($variable)
    This will be echoed
 @endistrue
- 
-// or
+```
+
+Or when you would like to quickly echo
+
+```blade
 @istrue($variable, 'This will be echoed')
 ```
 
+### @dump and @dd
+
 ```blade
 @dump($var)
+
 @dd($var)
 ```
+
+### @mix
 
 ```blade
 @mix('/css/app.css')
