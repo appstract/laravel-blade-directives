@@ -57,19 +57,26 @@ Or when you would like to quickly echo
 
 ### @mix
 
+#### Include a css file
+
 ```blade
 @mix('/css/app.css')
 ```
+
 Equivalent to:
+
 ```
 <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 ```
+
+#### Include a javascript file
 
 ```blade
 @mix('/css/app.js')
 ```
 
 Equivalent to:
+
 ```
 <script src="{{ mix('/css/app.js') }}"></script>
 ```
