@@ -56,7 +56,7 @@ return [
         return "<style>";
     },
 
-    'endstyle' => function ($style) {
+    'endstyle' => function () {
         return "</style>";
     },
 
