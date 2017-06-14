@@ -49,15 +49,15 @@ return [
     */
 
     'style' => function ($expression) {
-        if (!empty($expression)) {
+        if (! empty($expression)) {
             return '<link rel="stylesheet" href="'.$expression.'">';
         }
 
-        return "<style>";
+        return '<style>';
     },
 
     'endstyle' => function () {
-        return "</style>";
+        return '</style>';
     },
 
     /*
@@ -67,15 +67,15 @@ return [
     */
 
     'script' => function ($expression) {
-        if (!empty($expression)) {
+        if (! empty($expression)) {
             return '<script src="'.$expression.'"></script>';
         }
 
-        return "<script>";
+        return '<script>';
     },
 
     'endscript' => function () {
-        return "</script>";
+        return '</script>';
     },
 
     /*
