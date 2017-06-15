@@ -12,7 +12,7 @@ return [
 
     'istrue' => function ($expression) {
         if (str_contains($expression, ',')) {
-            $expression = DirectivesRepository::parseExpression($expression);
+            $expression = DirectivesRepository::parseMultipleArgs($expression);
 
             return  "<?php if (isset({$expression->get(0)}) && (bool) {$expression->get(0)} === true) : ?>".
                     "<?php echo {$expression->get(1)}; ?>".
@@ -50,7 +50,7 @@ return [
 
     'style' => function ($expression) {
         if (! empty($expression)) {
-            return '<link rel="stylesheet" href="'.str_replace("'", '', $expression).'">';
+            return '<link rel="stylesheet" href="'.DirectivesRepository::stripQuotes($expression).'">';
         }
 
         return '<style>';
@@ -68,7 +68,7 @@ return [
 
     'script' => function ($expression) {
         if (! empty($expression)) {
-            return '<script src="'.str_replace("'", '', $expression).'"></script>';
+            return '<script src="'.DirectivesRepository::stripQuotes($expression).'"></script>';
         }
 
         return '<script>';
@@ -80,12 +80,28 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | @js
+    |--------------------------------------------------------------------------
+    */
+
+    'js' => function ($expression) {
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
+
+        $variable = DirectivesRepository::stripQuotes($expression->get(0));
+
+        return  "<script>\n".
+                "window.{$variable} = <?php echo is_array({$expression->get(1)}) ? json_encode({$expression->get(1)}) : {$expression->get(1)}; ?>".
+                '</script>';
+    },
+
+    /*
+    |--------------------------------------------------------------------------
     | @instanceof
     |--------------------------------------------------------------------------
     */
 
     'instanceof' => function ($expression) {
-        $expression = DirectivesRepository::parseExpression($expression);
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
 
         return  "<?php if ({$expression->get(0)} instanceof {$expression->get(1)}) : ?>";
     },
@@ -101,7 +117,7 @@ return [
     */
 
     'typeof' => function ($expression) {
-        $expression = DirectivesRepository::parseExpression($expression);
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
 
         return  "<?php if (gettype({$expression->get(0)}) == {$expression->get(1)}) : ?>";
     },
