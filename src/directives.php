@@ -100,11 +100,19 @@ return [
     |---------------------------------------------------------------------
     */
 
-    'isroute' => function ($expression) {
+    'routeis' => function ($expression) {
         return "<?php if (Route::currentRouteName() == {$expression}) : ?>";
     },
 
-    'endisroute' => function ($expression) {
+    'endrouteis' => function ($expression) {
+        return '<?php endif; ?>';
+    },
+
+    'routeisnot' => function ($expression) {
+        return "<?php if (Route::currentRouteName() != {$expression}) : ?>";
+    },
+
+    'endrouteisnot' => function ($expression) {
         return '<?php endif; ?>';
     },
 
