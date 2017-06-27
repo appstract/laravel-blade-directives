@@ -186,13 +186,13 @@ return [
 
     'pushonce' => function ($expression) {
         list($push_name, $push_sub) = explode(':', trim(substr($expression, 1, -1)));
-        $k = '__pushonce_' . $push_name . '_' . $push_sub;
+        $k = '__pushonce_'.$push_name.'_'.$push_sub;
 
         return "<?php if(!isset(\$__env->{$k})): \$__env->{$k} = 1; \$__env->startPush('{$push_name}'); ?>";
     },
 
     'endpushonce' => function () {
         return '<?php $__env->stopPush(); endif; ?>';
-    }
+    },
 
 ];
