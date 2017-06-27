@@ -57,27 +57,15 @@ Or when you would like to quickly echo
 
 ### @mix
 
-#### Include a css file
-
+Create a HTML element to your Laravel-Mix css or js.
 ```blade
 @mix('/css/app.css')
+@mix('/css/app.js')
 ```
-
-Equivalent to:
+Output:
 
 ```
 <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-```
-
-#### Include a javascript file
-
-```blade
-@mix('/css/app.js')
-```
-
-Equivalent to:
-
-```
 <script src="{{ mix('/css/app.js') }}"></script>
 ```
 
