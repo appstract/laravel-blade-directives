@@ -85,8 +85,10 @@ Equivalent to:
 
 Same as `@push` but will include content one time only. Useful for repeatable blocks.
 
+First parameter must follow the syntax `stack-name:group-name`.
+
 ```blade
-@pushonce('group:name')
+@pushonce('js:foobar')
 
 <script src="{{ asset('/js/foobar.js') }}"></script>
 
