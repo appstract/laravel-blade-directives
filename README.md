@@ -33,7 +33,7 @@ Then add the ServiceProvider to your `config/app.php` file:
 
 ### @istrue
 
-Only show when ```$variable``` isset and true
+Only show when ```$variable``` isset and true.
 
 ```blade
 @istrue($variable)
@@ -99,7 +99,7 @@ Create a ```<script>``` element with or without a js path.
 ```blade
 @script
     alert('hello world')
-@endcript
+@endscript
 
 
 @script('/js/app.js')
@@ -107,7 +107,7 @@ Create a ```<script>``` element with or without a js path.
 
 ### @inline
 
-Load a css or js file inline in your view.
+Load the contents of a css or js file inline in your view.
 
 ```blade
 @inline('/js/manifest.js')
