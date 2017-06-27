@@ -33,7 +33,7 @@ Then add the ServiceProvider to your `config/app.php` file:
 
 ### @istrue
 
-Only show when $variable isset and true
+Only show when ```$variable``` isset and true
 
 ```blade
 @istrue($variable)
@@ -45,6 +45,16 @@ Or when you would like to quickly echo
 
 ```blade
 @istrue($variable, 'This will be echoed')
+```
+
+### @isfalse
+
+Same as ```@istrue``` but checks for isset and false.
+
+```blade
+@isfalse($variable)
+   This will be echoed
+@endisfalse
 ```
 
 ### @dump and @dd
@@ -122,6 +132,46 @@ Include pushes with standard `@stack` directive:
 
 ```blade
 @stack('js')
+```
+
+### @routeis
+
+Checks if the current route name is equal to the given parameter.
+
+```blade
+@routeis('webshop.checkout')
+    Do something only on the checkout
+@endrouteis
+```
+
+### @routeisnot
+
+Checks if the current route name is not equal to the given parameter.
+
+```blade
+@routeisnot('webshop.checkout')
+    Do something only if this is not the checkout
+@endrouteisnot
+```
+
+### @instanceof
+
+Checks if the first parameter is an instance of the second parameter.
+
+```blade
+@instanceof($user, App\Users)
+    User is an instance of App\User
+@endinstanceof
+```
+
+### @typeof
+
+Checks if the parameter is of a certain type.
+
+```blade
+@typeof($text, 'string')
+    Text is a string
+@endtypeof
 ```
 
 ## Testing
