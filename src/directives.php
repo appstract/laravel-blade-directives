@@ -106,8 +106,8 @@ return [
         $variable = DirectivesRepository::stripQuotes($expression->get(0));
 
         return  "<script>\n".
-                "window.{$variable} = <?php echo is_array({$expression->get(1)}) ? json_encode({$expression->get(1)}) : {$expression->get(1)}; ?>".
-                '</script>';
+                "window.{$variable} = <?php echo is_array({$expression->get(1)}) ? json_encode({$expression->get(1)}) : '\''.{$expression->get(1)}.'\''; ?>;\n".
+                "</script>";
     },
 
     /*
