@@ -105,9 +105,9 @@ return [
             "<?php include public_path({$expression}) ?>\n";
 
         if (ends_with($expression, ".css'")) {
-            return "<style>\n". $include .'</style>';
+            return "<style>\n".$include.'</style>';
         } elseif (ends_with($expression, ".js'")) {
-            return "<script>\n". $include .'</script>';
+            return "<script>\n".$include.'</script>';
         }
     },
 
