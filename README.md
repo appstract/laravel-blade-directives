@@ -64,10 +64,45 @@ Create a HTML element to your Laravel-Mix css or js.
 ```
 Output:
 
-```
+```blade
 <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 <script src="{{ mix('/css/app.js') }}"></script>
 ```
+
+### @style
+
+Create a ```<style>``` element or ```<link>``` element with a css path.
+
+```blade
+@style
+    body { background: black }
+@endstyle    
+
+
+@style('/css/app.css')
+```
+
+### @script
+
+Create a ```<script>``` element with or without a js path.
+
+```blade
+@script
+    alert('hello world')
+@endcript
+
+
+@script('/js/app.js')
+```
+
+### @inline
+
+Load a css or js file inline in your view.
+
+```blade
+@inline('/js/manifest.js')
+```
+
 
 ### @pushonce
 
