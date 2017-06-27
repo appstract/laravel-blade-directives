@@ -81,6 +81,23 @@ Equivalent to:
 <script src="{{ mix('/css/app.js') }}"></script>
 ```
 
+### @pushonce
+
+Same as `@push` but will include content one time only. Useful for repeatable blocks.
+
+```blade
+@pushonce('group:name')
+
+<script src="{{ asset('/js/foobar.js') }}"></script>
+
+@endpushonce()
+```
+
+Include pushes with standard `@stack` directive:
+
+```blade
+@stack('js')
+```
 
 ## Testing
 
