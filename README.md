@@ -5,8 +5,8 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/appstract/laravel-blade-directives/master.svg?style=flat-square)](https://travis-ci.org/appstract/laravel-blade-directives)
 
-A collection of a few handy Blade directives.
-
+A collection of nice Laravel Blade directives.
+ 
 ## Installation
 
 You can install the package via composer:
@@ -159,7 +159,7 @@ Checks if the current route name is not equal to the given parameter.
 Checks if the first parameter is an instance of the second parameter.
 
 ```blade
-@instanceof($user, App\Users)
+@instanceof($user, App\User)
     User is an instance of App\User
 @endinstanceof
 ```
