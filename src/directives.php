@@ -6,7 +6,7 @@ return [
 
     /*
     |---------------------------------------------------------------------
-    | @istrue
+    | @istrue / @isfalse
     |---------------------------------------------------------------------
     */
 
@@ -202,10 +202,11 @@ return [
     */
 
     'pushonce' => function ($expression) {
-        list($push_name, $push_sub) = explode(':', trim(substr($expression, 1, -1)));
-        $k = '__pushonce_'.$push_name.'_'.$push_sub;
+        list($pushName, $pushSub) = explode(':', trim(substr($expression, 1, -1)));
 
-        return "<?php if(!isset(\$__env->{$k})): \$__env->{$k} = 1; \$__env->startPush('{$push_name}'); ?>";
+        $key = '__pushonce_'.$pushName.'_'.$pushSub;
+
+        return "<?php if(! isset(\$__env->{$key})): \$__env->{$key} = 1; \$__env->startPush('{$pushName}'); ?>";
     },
 
     'endpushonce' => function () {
