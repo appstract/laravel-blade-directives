@@ -221,6 +221,6 @@ return [
 
     'fa' => function ($expression) {
         return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression).'"></i>';
-    }
+    },
 
 ];
