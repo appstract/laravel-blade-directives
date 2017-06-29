@@ -213,4 +213,14 @@ return [
         return '<?php $__env->stopPush(); endif; ?>';
     },
 
+    /*
+    |---------------------------------------------------------------------
+    | @fa
+    |---------------------------------------------------------------------
+    */
+
+    'fa' => function ($expression) {
+        return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression).'"></i>';
+    }
+
 ];
