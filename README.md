@@ -125,7 +125,7 @@ First parameter must follow the syntax `stack-name:group-name`.
 
 <script src="{{ asset('/js/foobar.js') }}"></script>
 
-@endpushonce()
+@endpushonce
 ```
 
 Include pushes with standard `@stack` directive:
