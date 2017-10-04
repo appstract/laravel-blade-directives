@@ -122,10 +122,8 @@ First parameter must follow the syntax `stack-name:group-name`.
 
 ```blade
 @pushonce('js:foobar')
-
-<script src="{{ asset('/js/foobar.js') }}"></script>
-
-@endpushonce()
+    <script src="{{ asset('/js/foobar.js') }}"></script>
+@endpushonce
 ```
 
 Include pushes with standard `@stack` directive:
