@@ -172,6 +172,16 @@ Checks if the parameter is of a certain type.
 @endtypeof
 ```
 
+### @repeat
+
+Repeat something a specified amount of times.
+
+```blade
+@repeat(3)
+    Iteration #{{ $iteration }}
+@endrepeat
+```
+
 ### @fa
 
 Quickly output a Font Awesome icon.
