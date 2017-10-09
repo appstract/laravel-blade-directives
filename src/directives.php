@@ -117,7 +117,7 @@ return [
     */
 
     'inline' => function ($expression) {
-        $include =  "//  {$expression}\n".
+        $include = "//  {$expression}\n".
                     "<?php include public_path({$expression}) ?>\n";
 
         if (ends_with($expression, ".html'")) {
