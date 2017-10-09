@@ -180,6 +180,16 @@ Quickly output a Font Awesome icon.
 @fa('address-book')
 ```
 
+### @repeat
+
+Repeat something a specified amount of times.
+
+```blade
+@repeat(3)
+Iteration #{{ $iteration }}
+@endrepeat
+```
+
 ## Testing
 
 ```bash
