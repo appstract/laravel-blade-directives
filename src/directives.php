@@ -96,25 +96,6 @@ return [
 
     /*
     |---------------------------------------------------------------------
-    | @inline
-    |---------------------------------------------------------------------
-    */
-
-    'inline' => function ($expression) {
-        $include = "//  {$expression}\n".
-            "<?php include public_path({$expression}) ?>\n";
-
-        if (ends_with($expression, ".html'")) {
-            return $include;
-        } elseif (ends_with($expression, ".css'")) {
-            return "<style>\n".$include.'</style>';
-        } elseif (ends_with($expression, ".js'")) {
-            return "<script>\n".$include.'</script>';
-        }
-    },
-
-    /*
-    |---------------------------------------------------------------------
     | @js
     |---------------------------------------------------------------------
     */
@@ -127,6 +108,29 @@ return [
         return  "<script>\n".
                 "window.{$variable} = <?php echo is_array({$expression->get(1)}) ? json_encode({$expression->get(1)}) : '\''.{$expression->get(1)}.'\''; ?>;\n".
                 '</script>';
+    },
+
+    /*
+    |---------------------------------------------------------------------
+    | @inline
+    |---------------------------------------------------------------------
+    */
+
+    'inline' => function ($expression) {
+        $include =  "//  {$expression}\n".
+                    "<?php include public_path({$expression}) ?>\n";
+
+        if (ends_with($expression, ".html'")) {
+            return $include;
+        }
+
+        if (ends_with($expression, ".css'")) {
+            return "<style>\n".$include.'</style>';
+        }
+
+        if (ends_with($expression, ".js'")) {
+            return "<script>\n".$include.'</script>';
+        }
     },
 
     /*
