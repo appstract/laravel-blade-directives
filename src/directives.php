@@ -218,16 +218,6 @@ return [
     'endpushonce' => function () {
         return '<?php $__env->stopPush(); endif; ?>';
     },
-
-    /*
-    |---------------------------------------------------------------------
-    | @fa
-    |---------------------------------------------------------------------
-    */
-
-    'fa' => function ($expression) {
-        return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression).'"></i>';
-    },
     
     /*
     |---------------------------------------------------------------------
@@ -243,5 +233,14 @@ return [
         return '<?php endfor; ?>';
     },
 
+    /*
+    |---------------------------------------------------------------------
+    | @fa
+    |---------------------------------------------------------------------
+    */
+
+    'fa' => function ($expression) {
+        return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression).'"></i>';
+    },
 
 ];
