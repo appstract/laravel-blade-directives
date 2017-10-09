@@ -172,22 +172,22 @@ Checks if the parameter is of a certain type.
 @endtypeof
 ```
 
-### @fa
-
-Quickly output a Font Awesome icon.
-
-```blade
-@fa('address-book')
-```
-
 ### @repeat
 
 Repeat something a specified amount of times.
 
 ```blade
 @repeat(3)
-Iteration #{{ $iteration }}
+    Iteration #{{ $iteration }}
 @endrepeat
+```
+
+### @fa
+
+Quickly output a Font Awesome icon.
+
+```blade
+@fa('address-book')
 ```
 
 ## Testing
