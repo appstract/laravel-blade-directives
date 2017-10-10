@@ -157,6 +157,20 @@ return [
 
     /*
     |---------------------------------------------------------------------
+    | @routestartswith
+    |---------------------------------------------------------------------
+    */
+
+    'routestartswith' => function ($expression) {
+        return "<?php if ( 0 === strpos(Route::currentRouteName(), {$expression}) ) : ?>";
+    },
+
+    'endroutestartswith' => function ($expression) {
+        return '<?php endif; ?>';
+    },
+
+    /*
+    |---------------------------------------------------------------------
     | @instanceof
     |---------------------------------------------------------------------
     */

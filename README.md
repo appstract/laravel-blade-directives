@@ -152,6 +152,16 @@ Checks if the current route name is not equal to the given parameter.
 @endrouteisnot
 ```
 
+### @routestartswith
+
+Checks if the current route name starts with the provided string.
+
+```blade
+@routestartswith('blog.post.')
+    Do something like class="active"
+@endrouteisnot
+```
+
 ### @instanceof
 
 Checks if the first parameter is an instance of the second parameter.
