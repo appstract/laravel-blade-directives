@@ -242,7 +242,15 @@ return [
     */
 
     'fa' => function ($expression) {
-        return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression).'"></i>';
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $result = $expression->get(0);
+        $customClass = $expression->get(1);
+
+        if ($customClass) {
+            $result .= " $customClass";
+        }
+
+        return '<i class="fa fa-'.DirectivesRepository::stripQuotes($result).'"></i>';
     },
 
 ];
