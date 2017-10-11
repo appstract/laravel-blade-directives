@@ -157,7 +157,7 @@ Checks if the current route name is not equal to the given parameter.
 Checks if the first parameter is an instance of the second parameter.
 
 ```blade
-@instanceof($user, App\User)
+@instanceof($user, 'App\User')
     User is an instance of App\User
 @endinstanceof
 ```
