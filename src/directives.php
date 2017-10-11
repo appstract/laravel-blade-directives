@@ -31,8 +31,8 @@ return [
             $expression = DirectivesRepository::parseMultipleArgs($expression);
 
             return  "<?php if (isset({$expression->get(0)}) && (bool) {$expression->get(0)} === false) : ?>".
-                "<?php echo {$expression->get(1)}; ?>".
-                '<?php endif; ?>';
+                    "<?php echo {$expression->get(1)}; ?>".
+                    '<?php endif; ?>';
         }
 
         return "<?php if (isset({$expression}) && (bool) {$expression} === false) : ?>";
@@ -243,14 +243,8 @@ return [
 
     'fa' => function ($expression) {
         $expression = DirectivesRepository::parseMultipleArgs($expression);
-        $result = $expression->get(0);
-        $customClass = $expression->get(1);
 
-        if ($customClass) {
-            $result .= " $customClass";
-        }
-
-        return '<i class="fa fa-'.DirectivesRepository::stripQuotes($result).'"></i>';
+        return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
     },
 
 ];
