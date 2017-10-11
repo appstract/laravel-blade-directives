@@ -6,7 +6,7 @@
 [![Build Status](https://img.shields.io/travis/appstract/laravel-blade-directives/master.svg?style=flat-square)](https://travis-ci.org/appstract/laravel-blade-directives)
 
 A collection of nice Laravel Blade directives.
- 
+
 ## Installation
 
 You can install the package via composer:
@@ -86,7 +86,7 @@ Create a ```<style>``` element or ```<link>``` element with a css path.
 ```blade
 @style
     body { background: black }
-@endstyle    
+@endstyle
 
 
 @style('/css/app.css')
@@ -187,7 +187,7 @@ Repeat something a specified amount of times.
 Quickly output a Font Awesome icon.
 
 ```blade
-@fa('address-book')
+@fa('address-book', 'optional-extra-class')
 ```
 
 ## Testing
