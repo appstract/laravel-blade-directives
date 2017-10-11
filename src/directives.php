@@ -140,7 +140,7 @@ return [
     */
 
     'routeis' => function ($expression) {
-        return "<?php if (Route::currentRouteName() == {$expression}) : ?>";
+        return "<?php if (fnmatch({$expression}, Route::currentRouteName())) : ?>";
     },
 
     'endrouteis' => function ($expression) {
@@ -152,20 +152,6 @@ return [
     },
 
     'endrouteisnot' => function ($expression) {
-        return '<?php endif; ?>';
-    },
-
-    /*
-    |---------------------------------------------------------------------
-    | @routestartswith
-    |---------------------------------------------------------------------
-    */
-
-    'routestartswith' => function ($expression) {
-        return "<?php if ( 0 === strpos(Route::currentRouteName(), {$expression}) ) : ?>";
-    },
-
-    'endroutestartswith' => function ($expression) {
         return '<?php endif; ?>';
     },
 

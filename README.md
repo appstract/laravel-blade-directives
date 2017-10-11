@@ -134,7 +134,7 @@ Include pushes with standard `@stack` directive:
 
 ### @routeis
 
-Checks if the current route name is equal to the given parameter.
+Checks if the current route name is equal to the given parameter. You can use a wildcard like "blog.post.*".
 
 ```blade
 @routeis('webshop.checkout')
@@ -149,16 +149,6 @@ Checks if the current route name is not equal to the given parameter.
 ```blade
 @routeisnot('webshop.checkout')
     Do something only if this is not the checkout
-@endrouteisnot
-```
-
-### @routestartswith
-
-Checks if the current route name starts with the provided string.
-
-```blade
-@routestartswith('blog.post.')
-    Do something like class="active"
 @endrouteisnot
 ```
 
