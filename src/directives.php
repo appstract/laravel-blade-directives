@@ -142,7 +142,7 @@ return [
     */
 
     'routeis' => function ($expression) {
-        return "<?php if (Route::currentRouteName() == {$expression}) : ?>";
+        return "<?php if (fnmatch({$expression}, Route::currentRouteName())) : ?>";
     },
 
     'endrouteis' => function ($expression) {
