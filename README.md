@@ -134,7 +134,7 @@ Include pushes with standard `@stack` directive:
 
 ### @routeis
 
-Checks if the current route name is equal to the given parameter. You can use a wildcard like "blog.post.*".
+Checks if the current route name is equal to the given parameter. You can use a wildcard like `blog.post.*`.
 
 ```blade
 @routeis('webshop.checkout')
@@ -144,7 +144,7 @@ Checks if the current route name is equal to the given parameter. You can use a 
 
 ### @routeisnot
 
-Checks if the current route name is not equal to the given parameter.
+Checks if the current route name is not equal to the given parameter. You can use a wildcard like `blog.post.*`
 
 ```blade
 @routeisnot('webshop.checkout')
