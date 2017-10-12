@@ -247,4 +247,18 @@ return [
         return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
     },
 
+    /*
+     |---------------------------------------------------------------------
+     | @data
+     |---------------------------------------------------------------------
+     */
+    'data' => function($expression) {
+        $output = sprintf('collect((array) %s)
+            ->map(function($val, $key) {
+                return "data-{$key}=\"{$val}\"";
+            })
+            ->implode(\' \')', $expression);
+        return sprintf("<?php echo %s; ?>", $output);
+    }
+
 ];
