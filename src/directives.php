@@ -258,6 +258,7 @@ return [
                 return "data-{$key}=\"{$val}\"";
             })
             ->implode(\' \')', $expression);
+
         return sprintf('<?php echo %s; ?>', $output);
     },
 
