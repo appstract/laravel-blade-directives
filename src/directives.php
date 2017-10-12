@@ -150,7 +150,7 @@ return [
     },
 
     'routeisnot' => function ($expression) {
-        return "<?php if (Route::currentRouteName() != {$expression}) : ?>";
+        return "<?php if (! fnmatch({$expression}, Route::currentRouteName())) : ?>";
     },
 
     'endrouteisnot' => function ($expression) {
