@@ -236,6 +236,22 @@ return [
     },
 
     /*
+     |---------------------------------------------------------------------
+     | @data
+     |---------------------------------------------------------------------
+     */
+
+    'data' => function ($expression) {
+        $output = 'collect((array) '.$expression.')
+            ->map(function($value, $key) {
+                return "data-{$key}=\"{$value}\"";
+            })
+            ->implode(" ")';
+
+        return "<?php echo $output; ?>";
+    },
+
+    /*
     |---------------------------------------------------------------------
     | @fa
     |---------------------------------------------------------------------
@@ -245,21 +261,6 @@ return [
         $expression = DirectivesRepository::parseMultipleArgs($expression);
 
         return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
-    },
-
-    /*
-     |---------------------------------------------------------------------
-     | @data
-     |---------------------------------------------------------------------
-     */
-    'data' => function ($expression) {
-        $output = sprintf('collect((array) %s)
-            ->map(function($val, $key) {
-                return "data-{$key}=\"{$val}\"";
-            })
-            ->implode(\' \')', $expression);
-
-        return sprintf('<?php echo %s; ?>', $output);
     },
 
 ];
