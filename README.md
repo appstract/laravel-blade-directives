@@ -193,7 +193,7 @@ Quickly output a Font Awesome icon.
 ## Testing
 
 ```bash
-$ composer test
+composer test
 ```
 
 ## Contributing
