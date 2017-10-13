@@ -190,6 +190,14 @@ Quickly output a Font Awesome icon.
 @fa('address-book', 'optional-extra-class')
 ```
 
+### @data
+
+Output data-attributes from a dictionary.
+
+```blade
+@data(['testing'=>123])
+```
+
 ## Testing
 
 ```bash
