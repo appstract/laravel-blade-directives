@@ -192,10 +192,10 @@ Quickly output a Font Awesome icon.
 
 ### @data
 
-Output data-attributes from a dictionary.
+Output data-attributes from an array.
 
 ```blade
-@data(['testing'=>123])
+@data(['testing' => 123])
 ```
 
 ## Testing
