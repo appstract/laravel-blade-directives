@@ -19,11 +19,13 @@ As new commands are released on occasion, we recommend adding `view:clear` to yo
 
 ```json
 {
+    ...
     "scripts": {
         "post-autoload-dump": [
             "@php artisan view:clear"
         ]
     }
+    ...
 }
 ```
 
