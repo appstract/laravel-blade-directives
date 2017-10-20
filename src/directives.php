@@ -3,45 +3,6 @@
 use Appstract\BladeDirectives\DirectivesRepository;
 
 return [
-
-    /*
-    |---------------------------------------------------------------------
-    | @istrue / @isfalse
-    |---------------------------------------------------------------------
-    */
-
-    'istrue' => function ($expression) {
-        if (str_contains($expression, ',')) {
-            $expression = DirectivesRepository::parseMultipleArgs($expression);
-
-            return  "<?php if (isset({$expression->get(0)}) && (bool) {$expression->get(0)} === true) : ?>".
-                    "<?php echo {$expression->get(1)}; ?>".
-                    '<?php endif; ?>';
-        }
-
-        return "<?php if (isset({$expression}) && (bool) {$expression} === true) : ?>";
-    },
-
-    'endistrue' => function ($expression) {
-        return '<?php endif; ?>';
-    },
-
-    'isfalse' => function ($expression) {
-        if (str_contains($expression, ',')) {
-            $expression = DirectivesRepository::parseMultipleArgs($expression);
-
-            return  "<?php if (isset({$expression->get(0)}) && (bool) {$expression->get(0)} === false) : ?>".
-                    "<?php echo {$expression->get(1)}; ?>".
-                    '<?php endif; ?>';
-        }
-
-        return "<?php if (isset({$expression}) && (bool) {$expression} === false) : ?>";
-    },
-
-    'endisfalse' => function ($expression) {
-        return '<?php endif; ?>';
-    },
-
     /*
     |---------------------------------------------------------------------
     | @mix
@@ -133,60 +94,6 @@ return [
         if (ends_with($expression, ".js'")) {
             return "<script>\n".$include.'</script>';
         }
-    },
-
-    /*
-    |---------------------------------------------------------------------
-    | @routeis
-    |---------------------------------------------------------------------
-    */
-
-    'routeis' => function ($expression) {
-        return "<?php if (fnmatch({$expression}, Route::currentRouteName())) : ?>";
-    },
-
-    'endrouteis' => function ($expression) {
-        return '<?php endif; ?>';
-    },
-
-    'routeisnot' => function ($expression) {
-        return "<?php if (! fnmatch({$expression}, Route::currentRouteName())) : ?>";
-    },
-
-    'endrouteisnot' => function ($expression) {
-        return '<?php endif; ?>';
-    },
-
-    /*
-    |---------------------------------------------------------------------
-    | @instanceof
-    |---------------------------------------------------------------------
-    */
-
-    'instanceof' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
-
-        return  "<?php if ({$expression->get(0)} instanceof {$expression->get(1)}) : ?>";
-    },
-
-    'endinstanceof' => function () {
-        return '<?php endif; ?>';
-    },
-
-    /*
-    |---------------------------------------------------------------------
-    | @typeof
-    |---------------------------------------------------------------------
-    */
-
-    'typeof' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
-
-        return  "<?php if (gettype({$expression->get(0)}) == {$expression->get(1)}) : ?>";
-    },
-
-    'endtypeof' => function () {
-        return '<?php endif; ?>';
     },
 
     /*

@@ -19,6 +19,7 @@ class BladeDirectivesServiceProvider extends ServiceProvider
         }
 
         $this->registerDirectives();
+        $this->registerConditionals();
     }
 
     /**
@@ -43,6 +44,23 @@ class BladeDirectivesServiceProvider extends ServiceProvider
             Config::get('blade-directives.directives')
         );
 
-        DirectivesRepository::register($directives);
+        DirectivesRepository::directive($directives);
+    }
+
+    /**
+     * Register all conditionals.
+     *
+     * @return void
+     */
+    public function registerConditionals()
+    {
+        $conditionals = require __DIR__.'/conditionals.php';
+
+        $conditionals = array_merge(
+            $directives,
+            Config::get('blade-directives.conditionals')
+        );
+
+        DirectivesRepository::conditional($conditionals);
     }
 }

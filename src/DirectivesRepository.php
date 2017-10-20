@@ -12,10 +12,23 @@ class DirectivesRepository
      * @param  array $directives
      * @return void
      */
-    public static function register(array $directives)
+    public static function directive(array $directives)
     {
         collect($directives)->each(function ($item, $key) {
             Blade::directive($key, $item);
+        });
+    }
+
+    /**
+     * Register the conditionals.
+     *
+     * @param  array $conditionals
+     * @return void
+     */
+    public static function conditional(array $conditionals)
+    {
+        collect($conditionals)->each(function ($item, $key) {
+            Blade::if($key, $item);
         });
     }
 
