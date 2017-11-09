@@ -12,12 +12,6 @@ class BladeDirectivesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/blade-directives.php' => config_path('blade-directives.php'),
-            ], 'config');
-        }
-
         $this->registerDirectives();
     }
 
@@ -26,7 +20,7 @@ class BladeDirectivesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/blade-directives.php', 'blade-directives');
+        //
     }
 
     /**
@@ -37,11 +31,6 @@ class BladeDirectivesServiceProvider extends ServiceProvider
     public function registerDirectives()
     {
         $directives = require __DIR__.'/directives.php';
-
-        $directives = array_merge(
-            $directives,
-            Config::get('blade-directives.directives')
-        );
 
         DirectivesRepository::register($directives);
     }
