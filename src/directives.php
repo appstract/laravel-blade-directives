@@ -48,7 +48,7 @@ return [
     |---------------------------------------------------------------------
     */
 
-    'isnull' => function ($expression){
+    'isnull' => function ($expression) {
         return "<?php if (is_null({$expression})) : ?>";
     },
 
@@ -56,7 +56,7 @@ return [
         return '<?php endif; ?>';
     },
 
-    'isnotnull' => function ($expression){
+    'isnotnull' => function ($expression) {
         return "<?php if (! is_null({$expression})) : ?>";
     },
 
