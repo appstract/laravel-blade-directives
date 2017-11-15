@@ -281,8 +281,13 @@ return [
 
     'fa' => function ($expression) {
         $expression = DirectivesRepository::parseMultipleArgs($expression);
-
-        return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+        $cssClass = ['fa'];
+        $cssClass[] = 'fa-' . DirectivesRepository::stripQuotes($expression->get(0));
+        if ($expression->has(1)) {
+            $cssClass[] = DirectivesRepository::stripQuotes($expression->get(1));
+        }
+        
+        return '<i class="' . implode(' ', $cssClass) . '" aria-hidden="true"></i>';
     },
 
 ];
