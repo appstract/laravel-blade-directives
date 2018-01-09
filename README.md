@@ -90,13 +90,13 @@ Same as ```@isnull``` but one shows when ```$variable``` is not null.
 Create a HTML element to your Laravel-Mix css or js.
 ```blade
 @mix('/css/app.css')
-@mix('/css/app.js')
+@mix('/js/app.js')
 ```
 Output:
 
 ```blade
 <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-<script src="{{ mix('/css/app.js') }}"></script>
+<script src="{{ mix('/js/app.js') }}"></script>
 ```
 
 ### @style
