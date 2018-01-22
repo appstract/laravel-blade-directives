@@ -15,20 +15,6 @@ You can install the package via composer:
 composer require appstract/laravel-blade-directives
 ```
 
-### Provider
-
-In Laravel 5.5 the package will autoregister the Service Provider. In older versions, you must add the ServiceProvider to your `config/app.php` file:
-
-```php
-'providers' => [
-    ...
-
-    Appstract\BladeDirectives\BladeDirectivesServiceProvider::class
-
-    ...
-];
-```
-
 ## Usage
 
 ### @istrue
