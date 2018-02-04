@@ -232,11 +232,10 @@ return [
     */
 
     'pushonce' => function ($expression) {
-        list($pushName, $pushSub) = explode(':', trim(substr($expression, 1, -1)));
-
-        $key = '__pushonce_'.$pushName.'_'.str_replace('-', '_', $pushSub);
-
-        return "<?php if(! isset(\$__env->{$key})): \$__env->{$key} = 1; \$__env->startPush('{$pushName}'); ?>";
+        return '<?php '
+            .sprintf(' list($__pushName, $__pushSub) = explode(\':\', trim(%s)); ', $expression)
+            .' $__pushKey = \'__pushonce_\'.$__pushName.\'_\'.$__pushSub;'
+            .' if(! isset($__env->{$__pushKey})): $__env->{$__pushKey} = 1; $__env->startPush($__pushName); ?>';
     },
 
     'endpushonce' => function () {
