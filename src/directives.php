@@ -238,7 +238,6 @@ return [
             .' if(! isset($__env->{$__pushKey})): $__env->{$__pushKey} = 1; $__env->startPush($__pushName); ?>';
     },
 
-
     'endpushonce' => function () {
         return '<?php $__env->stopPush(); endif; ?>';
     },
