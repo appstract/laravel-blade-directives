@@ -11,7 +11,6 @@
 |
 */
 
-
 // Routes used to test @routeis and @routeisnot blade directives
 
 Route::get('/webshop/checkout', function () {

@@ -35,9 +35,15 @@ trait RendersBlade
      */
     protected function stringify($value)
     {
-        if (is_null($value)) return 'null';
-        if (is_bool($value)) return $value ? 'true' : 'false';
-        if (is_string($value)) return '"'.$value.'"';
+        if (is_null($value)) {
+            return 'null';
+        }
+        if (is_bool($value)) {
+            return $value ? 'true' : 'false';
+        }
+        if (is_string($value)) {
+            return '"'.$value.'"';
+        }
 
         return (string) $value;
     }
