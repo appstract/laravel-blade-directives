@@ -19,6 +19,9 @@
             <directory suffix=".php">src/</directory>
         </whitelist>
     </filter>
+    <php>
+        <env name="APP_KEY" value="base64:QTYhu0GZFmf49iaUmShoTp5Q9doX2ZxFVzXkPxjPlJU="/>
+    </php>
     <logging>
         <log type="tap" target="build/report.tap"/>
         <log type="junit" target="build/report.junit.xml"/>
