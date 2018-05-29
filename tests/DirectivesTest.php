@@ -152,6 +152,38 @@ class DirectivesTest extends TestCase
         );
     }
 
+    public function test_fas()
+    {
+        $this->assertBladeRenders(
+            '<i class="fas fa-address-book optional-extra-class"></i>',
+            "@fas('address-book', 'optional-extra-class')"
+        );
+    }
+
+    public function test_far()
+    {
+        $this->assertBladeRenders(
+            '<i class="far fa-address-book optional-extra-class"></i>',
+            "@far('address-book', 'optional-extra-class')"
+        );
+    }
+
+    public function test_fal()
+    {
+        $this->assertBladeRenders(
+            '<i class="fal fa-address-book optional-extra-class"></i>',
+            "@fal('address-book', 'optional-extra-class')"
+        );
+    }
+
+    public function test_fab()
+    {
+        $this->assertBladeRenders(
+            '<i class="fab fa-address-book optional-extra-class"></i>',
+            "@fab('address-book', 'optional-extra-class')"
+        );
+    }
+
     public function test_data()
     {
         $this->assertBladeRenders(
