@@ -275,7 +275,7 @@ return [
 
     /*
     |---------------------------------------------------------------------
-    | @fa
+    | @fa, @fas, @far, @fal, @fab
     |---------------------------------------------------------------------
     */
 
@@ -283,6 +283,30 @@ return [
         $expression = DirectivesRepository::parseMultipleArgs($expression);
 
         return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+    },
+
+    'fas' => function ($expression) {
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
+
+        return '<i class="fas fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+    },
+
+    'far' => function ($expression) {
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
+
+        return '<i class="far fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+    },
+
+    'fal' => function ($expression) {
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
+
+        return '<i class="fal fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+    },
+
+    'fab' => function ($expression) {
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
+
+        return '<i class="fab fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
     },
 
 ];

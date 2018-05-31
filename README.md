@@ -188,12 +188,16 @@ Repeat something a specified amount of times.
 @endrepeat
 ```
 
-### @fa
+### @fa, @fas, @far, @fal, @fab
 
 Quickly output a Font Awesome icon.
 
 ```blade
 @fa('address-book', 'optional-extra-class')
+@fas('address-book', 'optional-extra-class')
+@far('address-book', 'optional-extra-class')
+@fal('address-book', 'optional-extra-class')
+@fab('address-book', 'optional-extra-class')
 ```
 
 ### @data
