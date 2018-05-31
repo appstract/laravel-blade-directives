@@ -194,6 +194,8 @@ Quickly output a Font Awesome icon.
 
 ```blade
 @fa('address-book', 'optional-extra-class')
+
+// for Font Awesome 5 (solid, regular, light, brand):
 @fas('address-book', 'optional-extra-class')
 @far('address-book', 'optional-extra-class')
 @fal('address-book', 'optional-extra-class')
