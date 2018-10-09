@@ -184,6 +184,22 @@ class DirectivesTest extends TestCase
         );
     }
 
+    public function test_mdi()
+    {
+        $this->assertBladeRenders(
+            '<i class="mdi mdi-account optional-extra-class"></i>',
+            "@mdi('account', 'optional-extra-class')"
+        );
+    }
+
+    public function test_glyphicons()
+    {
+        $this->assertBladeRenders(
+            '<i class="glyphicons glyphicons-glass optional-extra-class"></i>',
+            "@glyph('glass', 'optional-extra-class')"
+        );
+    }
+
     public function test_data()
     {
         $this->assertBladeRenders(

@@ -275,7 +275,7 @@ return [
 
     /*
     |---------------------------------------------------------------------
-    | @fa, @fas, @far, @fal, @fab
+    | @fa, @fas, @far, @fal, @fab, @mdi, @glyph
     |---------------------------------------------------------------------
     */
 
@@ -307,6 +307,18 @@ return [
         $expression = DirectivesRepository::parseMultipleArgs($expression);
 
         return '<i class="fab fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+    },
+
+    'mdi' => function ($expression) {
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
+
+        return '<i class="mdi mdi-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+    },
+
+    'glyph' => function ($expression) {
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
+
+        return '<i class="glyphicons glyphicons-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
     },
 
 ];
