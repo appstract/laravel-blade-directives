@@ -323,11 +323,11 @@ return [
 
     /*
     |---------------------------------------------------------------------
-    | @hasError
+    | @haserror
     |---------------------------------------------------------------------
     */
 
-    'hasError' => function ($expression) {
+    'haserror' => function ($expression) {
         return '<?php if (isset($errors) && $errors->has('.$expression.')): ?>';
     },
 
