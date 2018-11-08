@@ -223,7 +223,7 @@ class DirectivesTest extends TestCase
             'Input: This input has an error',
             'Input:@haserror("input_name") This input has an error @endhaserror',
             [
-                'errors' => $errors
+                'errors' => $errors,
             ]
         );
     }
