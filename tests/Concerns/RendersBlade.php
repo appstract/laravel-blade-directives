@@ -42,6 +42,10 @@ trait RendersBlade
             return $value ? 'true' : 'false';
         }
         if (is_string($value)) {
+            if(strpos($value, 'MessageBag') !== false) //is a new MessageBag object
+            {
+                return $value;
+            }
             return '"'.$value.'"';
         }
 
