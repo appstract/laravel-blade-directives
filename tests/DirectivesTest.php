@@ -213,7 +213,7 @@ class DirectivesTest extends TestCase
         //without errors var
         $this->assertBladeRenders(
             'Input: Has not errors',
-            'Input:@error($errors->has(\'input_name\')) This input has an error @enderror Has not errors'
+            'Input:@ifHasError($errors->has(\'input_name\')) This input has an error @enderror Has not errors'
         );
 
         $errors = "new \Illuminate\Support\MessageBag(['input_name' => 1])";
@@ -221,7 +221,7 @@ class DirectivesTest extends TestCase
         //with errors var
         $this->assertBladeRenders(
             'Input: This input has an error',
-            'Input:@error("input_name") This input has an error @enderror',
+            'Input:@ifHasError("input_name") This input has an error @enderror',
             [
                 'errors' => $errors
             ]
