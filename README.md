@@ -217,14 +217,14 @@ Output data-attributes from an array.
 ```
 
 
-### @ifHasError
+### @hasError
 
 Quickly output for classical  ```$errors->has('input_name')``` to determine if any error messages exist for a given field.
 
 ```blade
-@ifHasError('input_name')
+@hasError('input_name')
     This input has an error
-@enderror
+@endhaserror
 
 ```
 
