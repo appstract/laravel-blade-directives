@@ -321,4 +321,18 @@ return [
         return '<i class="glyphicons glyphicons-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
     },
 
+    /*
+    |---------------------------------------------------------------------
+    | @error
+    |---------------------------------------------------------------------
+    */
+
+    'error' => function ($expression) {
+        return '<?php if (isset($errors) && $errors->has('.$expression.')): ?>';
+    },
+
+    'enderror' => function ($expression) {
+        return '<?php endif; ?>';
+    },
+
 ];

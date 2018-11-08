@@ -207,4 +207,24 @@ class DirectivesTest extends TestCase
             "@data(['foo' => 123, 'bar' => 'baz'])"
         );
     }
+
+    public function test_error()
+    {
+        //without errors var
+        $this->assertBladeRenders(
+            'Input: Has not errors',
+            'Input:@error($errors->has(\'input_name\')) This input has an error @enderror Has not errors'
+        );
+
+        $errors = "new \Illuminate\Support\MessageBag(['input_name' => 1])";
+
+        //with errors var
+        $this->assertBladeRenders(
+            'Input: This input has an error',
+            'Input:@error("input_name") This input has an error @enderror',
+            [
+                'errors' => $errors
+            ]
+        );
+    }
 }
