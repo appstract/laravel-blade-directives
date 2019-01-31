@@ -75,15 +75,27 @@ class DirectivesTest extends TestCase
         );
     }
 
-    public function test_inline()
+    public function test_js_inline()
     {
         // see /tests/laravel/public/js/manifest-stub.js
         $this->assertBladeRenders(implode("\n", [
             '<script>',
-            "//  '/js/manifest-stub.js'",
+            "/* '/js/manifest-stub.js' */",
             '// manifest stub',
             '</script>',
         ]), "@inline('/js/manifest-stub.js')");
+    }
+
+    public function test_css_inline()
+    {
+        // see /tests/laravel/public/js/manifest-stub.js
+        $this->assertBladeRenders(implode("\n", [
+            '<style>',
+            "/* '/css/test.css' */",
+            '/* for Test */',
+            'body {}',
+            '</style>',
+        ]), "@inline('/css/test.css')");
     }
 
     public function test_pushonce()
