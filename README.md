@@ -228,6 +228,14 @@ Quickly output for classical  ```$errors->has('input_name')``` to determine if a
 
 ```
 
+### @meta
+
+Generate html 5 meta tag
+
+```blade
+@meta('viewport', 'width=device-width, initial-scale=1.0')
+```
+
 
 ## Testing
 
