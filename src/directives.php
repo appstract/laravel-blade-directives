@@ -44,6 +44,20 @@ return [
 
     /*
     |---------------------------------------------------------------------
+    | @meta
+    |---------------------------------------------------------------------
+    */
+    'meta' => function ($expression) {
+
+            $expression = DirectivesRepository::parseMultipleArgs($expression)->map(function ($item) {
+                return DirectivesRepository::stripQuotes($item);
+            });
+
+            return  "<meta name=\"". $expression->get(0) ."\" content=\"". $expression->get(1) ."\">";
+    },
+
+    /*
+    |---------------------------------------------------------------------
     | @isnull / @isnotnull
     |---------------------------------------------------------------------
     */
@@ -209,20 +223,6 @@ return [
 
     'endtypeof' => function () {
         return '<?php endif; ?>';
-    },
-
-    /*
-    |---------------------------------------------------------------------
-    | @dump, @dd
-    |---------------------------------------------------------------------
-    */
-
-    'dump' => function ($expression) {
-        return "<?php dump({$expression}); ?>";
-    },
-
-    'dd' => function ($expression) {
-        return "<?php dd({$expression}); ?>";
     },
 
     /*
