@@ -40,6 +40,6 @@ class DirectivesRepository
      */
     public static function stripQuotes($expression)
     {
-        return str_replace(["'", "\""], '', $expression);
+        return str_replace(["'", '"'], '', $expression);
     }
 }

@@ -232,7 +232,7 @@ return [
     */
 
     'pushonce' => function ($expression) {
-        list($pushName, $pushSub) = explode(':', trim(substr($expression, 1, -1)));
+        [$pushName, $pushSub] = explode(':', trim(substr($expression, 1, -1)));
 
         $key = '__pushonce_'.str_replace('-', '_', $pushName).'_'.str_replace('-', '_', $pushSub);
 
