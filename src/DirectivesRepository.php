@@ -33,13 +33,13 @@ class DirectivesRepository
     }
 
     /**
-     * Strip single quotes.
+     * Strip quotes.
      *
      * @param  string $expression
      * @return string
      */
     public static function stripQuotes($expression)
     {
-        return str_replace("'", '', $expression);
+        return str_replace(["'", "\""], '', $expression);
     }
 }
