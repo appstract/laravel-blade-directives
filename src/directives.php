@@ -66,6 +66,16 @@ return [
 
     /*
     |---------------------------------------------------------------------
+    | @includeOnce
+    |---------------------------------------------------------------------
+    */
+
+    'includeOnce' => function ($expression) {
+        return "<?php if (\Appstract\BladeDirectives\DirectivesRepository::viewWasNotIncluded({$expression})) {echo \$__env->make({$expression}, \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render();\Appstract\BladeDirectives\DirectivesRepository::addIncludedView({$expression});} ?>";
+    },
+
+    /*
+    |---------------------------------------------------------------------
     | @mix
     |---------------------------------------------------------------------
     */
