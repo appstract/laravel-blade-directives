@@ -54,15 +54,15 @@ class DirectivesRepository
      *
      * @return bool
      */
-    public static function viewWasNotIncluded ( $view )
+    public static function viewWasNotIncluded($view)
     {
-        return ! in_array ( $view, static::$views_registry );
+        return ! in_array($view, static::$views_registry);
     }
 
     /**
      * @param string $view
      */
-    public static function addIncludedView ( $view )
+    public static function addIncludedView($view)
     {
         static::$views_registry[] = $view;
     }

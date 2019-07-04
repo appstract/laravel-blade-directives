@@ -42,7 +42,7 @@ class DirectivesTest extends TestCase
         $this->assertBladeRenders('It is not null', $blade, ['variable' => 'not null']);
     }
 
-    public function test_include_once ()
+    public function test_include_once()
     {
         $blade = "@includeOnce('not-checkout')";
         $this->assertBladeRenders('Do something only if this is not the checkout', $blade);
