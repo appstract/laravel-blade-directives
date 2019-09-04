@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Str;
 use Appstract\BladeDirectives\DirectivesRepository;
 
 return [
@@ -11,7 +12,7 @@ return [
     */
 
     'istrue' => function ($expression) {
-        if (str_contains($expression, ',')) {
+        if (Str::contains($expression, ',')) {
             $expression = DirectivesRepository::parseMultipleArgs($expression);
 
             return  "<?php if (isset({$expression->get(0)}) && (bool) {$expression->get(0)} === true) : ?>".
@@ -27,7 +28,7 @@ return [
     },
 
     'isfalse' => function ($expression) {
-        if (str_contains($expression, ',')) {
+        if (Str::contains($expression, ',')) {
             $expression = DirectivesRepository::parseMultipleArgs($expression);
 
             return  "<?php if (isset({$expression->get(0)}) && (bool) {$expression->get(0)} === false) : ?>".
