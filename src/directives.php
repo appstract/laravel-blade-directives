@@ -107,9 +107,10 @@ return [
     |---------------------------------------------------------------------
     */
 
-    'script' => function ($expression) {
+    'script' => function ($expression, $defer = null) {
         if (! empty($expression)) {
-            return '<script src="'.DirectivesRepository::stripQuotes($expression).'"></script>';
+        [$src, $defer] = explode(',', str_replace(['(', ')', ' '], '', $expression));
+            return '<script src="'.DirectivesRepository::stripQuotes($src).'"'.$defer.'></script>';
         }
 
         return '<script>';
