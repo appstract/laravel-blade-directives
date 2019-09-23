@@ -109,7 +109,8 @@ return [
 
     'script' => function ($expression, $defer = null) {
         if (! empty($expression)) {
-        [$src, $defer] = explode(',', str_replace(['(', ')', ' '], '', $expression));
+            [$src, $defer] = explode(',', str_replace(['(', ')', ' '], '', $expression));
+
             return '<script src="'.DirectivesRepository::stripQuotes($src).'"'.$defer.'></script>';
         }
 
