@@ -42,6 +42,13 @@ class DirectivesTest extends TestCase
         $this->assertBladeRenders('It is not null', $blade, ['variable' => 'not null']);
     }
 
+    public function test_include_once()
+    {
+        $blade = "@includeOnce('not-checkout')";
+        $this->assertBladeRenders('Do something only if this is not the checkout', $blade);
+        $this->assertBladeRenders('', $blade); // The second time the view shouldn't be included
+    }
+
     public function test_mix()
     {
         // See /tests/laravel/public/mix-manifest.json for CSS file name
