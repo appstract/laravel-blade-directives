@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Str;
 use Appstract\BladeDirectives\Parser;
+use Illuminate\Support\Str;
 
 return [
 
@@ -178,7 +178,7 @@ return [
         $variable = Parser::stripQuotes($expression->get(0));
 
         return  implode("\n", [
-            "<script>",
+            '<script>',
             "window.{$variable} = <?php echo is_array({$expression->get(1)}) ? json_encode({$expression->get(1)}) : {$expression->get(1)}; ?>;",
             '</script>',
         ]);
