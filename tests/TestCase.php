@@ -2,24 +2,18 @@
 
 namespace Appstract\BladeDirectives\Test;
 
+use Artisan;
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use Appstract\BladeDirectives\Test\Concerns\RendersBlade;
 use Appstract\BladeDirectives\Test\Concerns\CreatesApplication;
 
 class TestCase extends BaseTestCase
 {
-    use CreatesApplication, RendersBlade;
+    use CreatesApplication;
 
-    /**
-     * Assert that blade markup and view data render HTML markup.
-     *
-     * @param string $expectedHtml
-     * @param string $viewContent blade markup
-     * @param array $viewData
-     * @return void
-     */
-    protected function assertBladeRenders($expectedHtml, $viewContent, $viewData = [])
+    public function setUp(): void
     {
-        $this->assertEquals($expectedHtml, $this->renderBlade($viewContent, $viewData));
+        parent::setUp();
+
+        $this->blade = app('blade.compiler');
     }
 }
