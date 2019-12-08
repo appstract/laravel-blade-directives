@@ -216,7 +216,6 @@ Output data-attributes from an array.
 @data(['testing' => 123])
 ```
 
-
 ### @haserror
 
 Quickly output for classical  ```$errors->has('input_name')``` to determine if any error messages exist for a given field.
@@ -225,9 +224,7 @@ Quickly output for classical  ```$errors->has('input_name')``` to determine if a
 @haserror('input_name')
     This input has an error
 @endhaserror
-
 ```
-
 
 ## Testing
 
