@@ -2,6 +2,7 @@
 
 namespace Appstract\BladeDirectives;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class BladeDirectivesServiceProvider extends ServiceProvider
@@ -15,14 +16,6 @@ class BladeDirectivesServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the application services.
-     */
-    public function register()
-    {
-        //
-    }
-
-    /**
      * Register all directives.
      *
      * @return void
@@ -31,6 +24,8 @@ class BladeDirectivesServiceProvider extends ServiceProvider
     {
         $directives = require __DIR__.'/directives.php';
 
-        DirectivesRepository::register($directives);
+        collect($directives)->each(function ($item, $key) {
+            Blade::directive($key, $item);
+        });
     }
 }

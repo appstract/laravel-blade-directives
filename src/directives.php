@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-use Appstract\BladeDirectives\DirectivesRepository;
+use Appstract\BladeDirectives\Parser;
 
 return [
 
@@ -9,11 +9,16 @@ return [
     |---------------------------------------------------------------------
     | @istrue / @isfalse
     |---------------------------------------------------------------------
+    |
+    | These directives can be used in different ways.
+    | @istrue($v) Echo this @endistrue, @istrue($v, 'Echo this')
+    | or @istrue($variable, $echoThisVariables)
+    |
     */
 
     'istrue' => function ($expression) {
         if (Str::contains($expression, ',')) {
-            $expression = DirectivesRepository::parseMultipleArgs($expression);
+            $expression = Parser::multipleArgs($expression);
 
             return implode('', [
                 "<?php if (isset({$expression->get(0)}) && (bool) {$expression->get(0)} === true) : ?>",
@@ -31,7 +36,7 @@ return [
 
     'isfalse' => function ($expression) {
         if (Str::contains($expression, ',')) {
-            $expression = DirectivesRepository::parseMultipleArgs($expression);
+            $expression = Parser::multipleArgs($expression);
 
             return implode('', [
                 "<?php if (isset({$expression->get(0)}) && (bool) {$expression->get(0)} === false) : ?>",
@@ -51,9 +56,24 @@ return [
     |---------------------------------------------------------------------
     | @isnull / @isnotnull
     |---------------------------------------------------------------------
+    |
+    | These directives can be used in different ways.
+    | @isnull($v) Echo this @endisnull, @isnull($v, 'Echo this')
+    | or @isnull($variable, $echoThisVariables)
+    |
     */
 
     'isnull' => function ($expression) {
+        if (Str::contains($expression, ',')) {
+            $expression = Parser::multipleArgs($expression);
+
+            return implode('', [
+                "<?php if (is_null({$expression->get(0)})) : ?>",
+                "<?php echo {$expression->get(1)}; ?>",
+                '<?php endif; ?>',
+            ]);
+        }
+
         return "<?php if (is_null({$expression})) : ?>";
     },
 
@@ -62,6 +82,16 @@ return [
     },
 
     'isnotnull' => function ($expression) {
+        if (Str::contains($expression, ',')) {
+            $expression = Parser::multipleArgs($expression);
+
+            return implode('', [
+                "<?php if (! is_null({$expression->get(0)})) : ?>",
+                "<?php echo {$expression->get(1)}; ?>",
+                '<?php endif; ?>',
+            ]);
+        }
+
         return "<?php if (! is_null({$expression})) : ?>";
     },
 
@@ -73,6 +103,9 @@ return [
     |---------------------------------------------------------------------
     | @mix
     |---------------------------------------------------------------------
+    |
+    | Usage: @mix('js/app.js') of @mix('css/app.css')
+    |
     */
 
     'mix' => function ($expression) {
@@ -91,11 +124,14 @@ return [
     |---------------------------------------------------------------------
     | @style
     |---------------------------------------------------------------------
+    |
+    | Usage: @style('/css/app.css') or @style body{ color: red; } @endstyle
+    |
     */
 
     'style' => function ($expression) {
         if (! empty($expression)) {
-            return '<link rel="stylesheet" href="'.DirectivesRepository::stripQuotes($expression).'">';
+            return '<link rel="stylesheet" href="'.Parser::stripQuotes($expression).'">';
         }
 
         return '<style>';
@@ -109,11 +145,14 @@ return [
     |---------------------------------------------------------------------
     | @script
     |---------------------------------------------------------------------
+    |
+    | Usage: @script('/js/app.js') or @script alert('Message') @endstyle
+    |
     */
 
     'script' => function ($expression) {
         if (! empty($expression)) {
-            return '<script src="'.DirectivesRepository::stripQuotes($expression).'"></script>';
+            return '<script src="'.Parser::stripQuotes($expression).'"></script>';
         }
 
         return '<script>';
@@ -125,18 +164,24 @@ return [
 
     /*
     |---------------------------------------------------------------------
-    | @js
+    | @window
     |---------------------------------------------------------------------
+    |
+    | This directive can be used to add variables to javascript's window
+    | Usage: @window('name', ['key' => 'value'])
+    |
     */
 
-    'js' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+    'window' => function ($expression) {
+        $expression = Parser::multipleArgs($expression);
 
-        $variable = DirectivesRepository::stripQuotes($expression->get(0));
+        $variable = Parser::stripQuotes($expression->get(0));
 
-        return  "<script>\n".
-                "window.{$variable} = <?php echo is_array({$expression->get(1)}) ? json_encode({$expression->get(1)}) : '\''.{$expression->get(1)}.'\''; ?>;\n".
-                '</script>';
+        return  implode("\n", [
+            "<script>",
+            "window.{$variable} = <?php echo is_array({$expression->get(1)}) ? json_encode({$expression->get(1)}) : {$expression->get(1)}; ?>;",
+            '</script>',
+        ]);
     },
 
     /*
@@ -146,8 +191,10 @@ return [
     */
 
     'inline' => function ($expression) {
-        $include = "/* {$expression} */\n".
-                   "<?php include public_path({$expression}) ?>\n";
+        $include = implode("\n", [
+            "/* {$expression} */",
+            "<?php include public_path({$expression}) ?>\n",
+        ]);
 
         if (ends_with($expression, ".html'")) {
             return $include;
@@ -191,7 +238,7 @@ return [
     */
 
     'instanceof' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $expression = Parser::multipleArgs($expression);
 
         return  "<?php if ({$expression->get(0)} instanceof {$expression->get(1)}) : ?>";
     },
@@ -207,7 +254,7 @@ return [
     */
 
     'typeof' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $expression = Parser::multipleArgs($expression);
 
         return  "<?php if (gettype({$expression->get(0)}) == {$expression->get(1)}) : ?>";
     },
@@ -268,7 +315,7 @@ return [
      |---------------------------------------------------------------------
      */
 
-    'data' => function ($expression) {
+    'dataAttributes' => function ($expression) {
         $output = 'collect((array) '.$expression.')
             ->map(function($value, $key) {
                 return "data-{$key}=\"{$value}\"";
@@ -285,51 +332,51 @@ return [
     */
 
     'fa' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $expression = Parser::multipleArgs($expression);
 
-        return '<i class="fa fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+        return '<i class="fa fa-'.Parser::stripQuotes($expression->get(0)).' '.Parser::stripQuotes($expression->get(1)).'"></i>';
     },
 
     'fas' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $expression = Parser::multipleArgs($expression);
 
-        return '<i class="fas fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+        return '<i class="fas fa-'.Parser::stripQuotes($expression->get(0)).' '.Parser::stripQuotes($expression->get(1)).'"></i>';
     },
 
     'far' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $expression = Parser::multipleArgs($expression);
 
-        return '<i class="far fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+        return '<i class="far fa-'.Parser::stripQuotes($expression->get(0)).' '.Parser::stripQuotes($expression->get(1)).'"></i>';
     },
 
     'fal' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $expression = Parser::multipleArgs($expression);
 
-        return '<i class="fal fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+        return '<i class="fal fa-'.Parser::stripQuotes($expression->get(0)).' '.Parser::stripQuotes($expression->get(1)).'"></i>';
     },
 
     'fab' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $expression = Parser::multipleArgs($expression);
 
-        return '<i class="fab fa-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+        return '<i class="fab fa-'.Parser::stripQuotes($expression->get(0)).' '.Parser::stripQuotes($expression->get(1)).'"></i>';
     },
 
     'mdi' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $expression = Parser::multipleArgs($expression);
 
-        return '<i class="mdi mdi-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+        return '<i class="mdi mdi-'.Parser::stripQuotes($expression->get(0)).' '.Parser::stripQuotes($expression->get(1)).'"></i>';
     },
 
     'glyph' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $expression = Parser::multipleArgs($expression);
 
-        return '<i class="glyphicons glyphicons-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+        return '<i class="glyphicons glyphicons-'.Parser::stripQuotes($expression->get(0)).' '.Parser::stripQuotes($expression->get(1)).'"></i>';
     },
 
     'bi' => function ($expression) {
-        $expression = DirectivesRepository::parseMultipleArgs($expression);
+        $expression = Parser::multipleArgs($expression);
 
-        return '<i class="bi bi-'.DirectivesRepository::stripQuotes($expression->get(0)).' '.DirectivesRepository::stripQuotes($expression->get(1)).'"></i>';
+        return '<i class="bi bi-'.Parser::stripQuotes($expression->get(0)).' '.Parser::stripQuotes($expression->get(1)).'"></i>';
     },
 
     /*
