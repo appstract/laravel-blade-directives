@@ -2,7 +2,7 @@
 
 namespace Appstract\BladeDirectives\Test;
 
-class DataAttrbiutesTest extends TestCase
+class DataAttributesTest extends TestCase
 {
     public function _test_data_attributes_is_compiled()
     {
@@ -13,7 +13,7 @@ class DataAttrbiutesTest extends TestCase
             '->map(function($value, $key) {',
                 'return "data-{$key}=\"{$value}\"";',
             '})',
-            '->implode(" "); ?>'
+            '->implode(" "); ?>',
         ]);
 
         $this->assertSame($expected, $this->blade->compileString($blade));

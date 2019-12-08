@@ -2,8 +2,8 @@
 
 namespace Appstract\BladeDirectives\Test;
 
-use Orchestra\Testbench\TestCase as BaseTestCase;
 use Appstract\BladeDirectives\Test\Concerns\CreatesApplication;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {
