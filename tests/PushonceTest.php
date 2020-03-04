@@ -12,7 +12,7 @@ class PushonceTest extends TestCase
             '@endpushonce',
             "@pushonce('js:foobar')",
             '<script src="/js/foobar.js"></script>',
-            "@endpushonce",
+            '@endpushonce',
             "@stack('js')",
         ]);
 

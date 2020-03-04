@@ -2,7 +2,7 @@
 
 namespace Appstract\BladeDirectives\Test;
 
-class IsStatementTest extends TestCase
+class IsStatementsTest extends TestCase
 {
     public function test_istrue_is_compiled()
     {
