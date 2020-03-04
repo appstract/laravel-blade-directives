@@ -11,7 +11,7 @@ class DataAttributesTest extends TestCase
         $expected = implode("\n", [
             "<?php echo collect((array) ['foo' => 123, 'bar' => 'baz'])",
             '->map(function($value, $key) {',
-                'return "data-{$key}=\"{$value}\"";',
+            'return "data-{$key}=\"{$value}\"";',
             '})',
             '->implode(" "); ?>',
         ]);
