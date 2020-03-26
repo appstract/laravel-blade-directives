@@ -109,11 +109,11 @@ return [
     */
 
     'mix' => function ($expression) {
-        if (ends_with($expression, ".css'")) {
+        if (Str::endsWith($expression, ".css'")) {
             return '<link rel="stylesheet" href="<?php echo mix('.$expression.') ?>">';
         }
 
-        if (ends_with($expression, ".js'")) {
+        if (Str::endsWith($expression, ".js'")) {
             return '<script src="<?php echo mix('.$expression.') ?>"></script>';
         }
 
@@ -196,15 +196,15 @@ return [
             "<?php include public_path({$expression}) ?>\n",
         ]);
 
-        if (ends_with($expression, ".html'")) {
+        if (Str::endsWith($expression, ".html'")) {
             return $include;
         }
 
-        if (ends_with($expression, ".css'")) {
+        if (Str::endsWith($expression, ".css'")) {
             return "<style>\n".$include.'</style>';
         }
 
-        if (ends_with($expression, ".js'")) {
+        if (Str::endsWith($expression, ".js'")) {
             return "<script>\n".$include.'</script>';
         }
     },

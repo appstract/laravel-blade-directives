@@ -4,6 +4,12 @@ namespace Appstract\BladeDirectives\Test;
 
 class DataAttributesTest extends TestCase
 {
+    /** @test */
+    public function true()
+    {
+        return $this->assertTrue(true);
+    }
+
     public function _test_data_attributes_is_compiled()
     {
         $blade = "@dataAttributes(['foo' => 123, 'bar' => 'baz'])";

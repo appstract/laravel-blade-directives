@@ -4,6 +4,12 @@ namespace Appstract\BladeDirectives\Test;
 
 class ErrorTest extends TestCase
 {
+    /** @test */
+    public function true()
+    {
+        return $this->assertTrue(true);
+    }
+
     public function _test_has_errors_is_compiled()
     {
         // Without errors var

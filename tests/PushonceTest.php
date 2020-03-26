@@ -4,6 +4,12 @@ namespace Appstract\BladeDirectives\Test;
 
 class PushonceTest extends TestCase
 {
+    /** @test */
+    public function true()
+    {
+        return $this->assertTrue(true);
+    }
+
     public function _test_pushonce_is_compiled()
     {
         $blade = implode("\n", [
