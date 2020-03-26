@@ -19,7 +19,8 @@ class TestCase extends BaseTestCase
     }
 
     // https://stevegrunwell.com/blog/custom-laravel-blade-directives/
-    protected function assertDirectiveOutput($expected, $expression, $variables = [], $message = '') {
+    protected function assertDirectiveOutput($expected, $expression, $variables = [], $message = '')
+    {
         $compiled = $this->blade->compileString($expression);
 
         ob_start();
