@@ -188,18 +188,19 @@ Repeat something a specified amount of times.
 @endrepeat
 ```
 
-### @fa, @fas, @far, @fal, @fab, @mdi, @glyph
+### @fa, @fas, @far, @fal, @fab, @fad, @mdi, @glyph
 
 Quickly output an icon with Font Awesome, Material Design Icons or Glyphicon.
 
 ```blade
 @fa('address-book', 'optional-extra-class')
 
-// for Font Awesome 5 (solid, regular, light, brand):
+// for Font Awesome 5 (solid, regular, light, brand, duotone):
 @fas('address-book', 'optional-extra-class')
 @far('address-book', 'optional-extra-class')
 @fal('address-book', 'optional-extra-class')
 @fab('address-book', 'optional-extra-class')
+@fad('address-book', 'optional-extra-class')
 
 // for Material Design Icons
 @mdi('account', 'optional-extra-class')

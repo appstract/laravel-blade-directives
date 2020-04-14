@@ -336,6 +336,12 @@ return [
 
         return '<i class="fa fa-'.Parser::stripQuotes($expression->get(0)).' '.Parser::stripQuotes($expression->get(1)).'"></i>';
     },
+    
+    'fad' => function ($expression) {
+        $expression = Parser::multipleArgs($expression);
+
+        return '<i class="fad fa-'.Parser::stripQuotes($expression->get(0)).' '.Parser::stripQuotes($expression->get(1)).'"></i>';
+    },
 
     'fas' => function ($expression) {
         $expression = Parser::multipleArgs($expression);
