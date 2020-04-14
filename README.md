@@ -188,7 +188,7 @@ Repeat something a specified amount of times.
 @endrepeat
 ```
 
-### @fa, @fas, @far, @fal, @fab, @mdi, @glyph
+### @fa, @fas, @far, @fal, @fab, @fad, @mdi, @glyph
 
 Quickly output an icon with Font Awesome, Material Design Icons or Glyphicon.
 
