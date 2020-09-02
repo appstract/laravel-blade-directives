@@ -11,7 +11,12 @@ env:
   - LARAVEL_VERSION=^6.0
   - LARAVEL_VERSION=^7.0  
   - LARAVEL_VERSION=^8.0
-  
+
+matrix:
+  exclude:
+    - php: 7.2
+      env: LARAVEL_VERSION=^8.0
+ 
 before_script:
   - travis_retry composer self-update
   - composer require laravel/framework:${LARAVEL_VERSION}
