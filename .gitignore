@@ -18,4 +18,5 @@ build
 composer.lock
 docs
 phpunit.xml
+.phpunit.result.cache
 vendor
