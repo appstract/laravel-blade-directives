@@ -398,5 +398,20 @@ return [
     'endhaserror' => function () {
         return '<?php endif; ?>';
     },
+    
+    /*
+    |---------------------------------------------------------------------
+    | @set
+    |---------------------------------------------------------------------
+    |
+    | This directive can be used to define a variable.
+    | Usage: @set(name, value)
+    |
+    */
+
+    'set' => function ($expression) {
+        list($name, $val) = explode(',', $expression);
+        return "<?php {$name} = {$val}; ?>";
+    },
 
 ];
