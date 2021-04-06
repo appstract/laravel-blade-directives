@@ -227,6 +227,16 @@ Quickly output for classical  ```$errors->has('input_name')``` to determine if a
 @endhaserror
 ```
 
+### @returnifempty
+
+`return` if the given variable is empty. Useful when you want to return 'nothing' if the required parameter of a view component not provided.
+
+```blade
+@returnifempty($var)
+
+{{-- The following codes won't get executed if $var is empty --}}
+```
+
 ## Testing
 
 ```bash
