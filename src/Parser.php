@@ -7,7 +7,7 @@ class Parser
     /**
      * Parse expression.
      *
-     * @param  string $expression
+     * @param  string  $expression
      * @return \Illuminate\Support\Collection
      */
     public static function multipleArgs($expression)
@@ -20,7 +20,7 @@ class Parser
     /**
      * Strip quotes.
      *
-     * @param  string $expression
+     * @param  string  $expression
      * @return string
      */
     public static function stripQuotes($expression)
