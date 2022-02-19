@@ -399,4 +399,14 @@ return [
         return '<?php endif; ?>';
     },
 
+    /*
+    |---------------------------------------------------------------------
+    | @returnifempty
+    |---------------------------------------------------------------------
+    */
+
+    'returnifempty' => function ($expression) {
+        return "<?php if (empty($expression) || ($expression && !count($expression))) { return; } ?>";
+    },
+
 ];
