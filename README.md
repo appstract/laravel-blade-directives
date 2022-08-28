@@ -227,6 +227,14 @@ Quickly output for classical  ```$errors->has('input_name')``` to determine if a
 @endhaserror
 ```
 
+### @set
+
+Define a varible.
+
+```blade
+@set($varName, 'value ...')
+```
+
 ## Testing
 
 ```bash
