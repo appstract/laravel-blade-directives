@@ -19,7 +19,7 @@ composer require appstract/laravel-blade-directives
 
 ### @istrue
 
-Only show when ```$variable``` isset and true.
+Only show when `$variable` isset and true.
 
 ```blade
 @istrue($variable)
@@ -35,7 +35,7 @@ Or when you would like to quickly echo
 
 ### @isfalse
 
-Same as ```@istrue``` but checks for isset and false.
+Same as `@istrue` but checks for isset and false.
 
 ```blade
 @isfalse($variable)
@@ -45,7 +45,7 @@ Same as ```@istrue``` but checks for isset and false.
 
 ### @isnull
 
-Only show when ```$variable``` is null.
+Only show when `$variable` is null.
 
 ```blade
 @isnull($variable)
@@ -55,7 +55,7 @@ Only show when ```$variable``` is null.
 
 ### @isnotnull
 
-Same as ```@isnull``` but one shows when ```$variable``` is not null.
+Same as `@isnull` but one shows when `$variable` is not null.
 
 ```blade
 @isnotnull($variable)
@@ -74,10 +74,12 @@ Same as ```@isnull``` but one shows when ```$variable``` is not null.
 ### @mix
 
 Create a HTML element to your Laravel-Mix css or js.
+
 ```blade
 @mix('/css/app.css')
 @mix('/js/app.js')
 ```
+
 Output:
 
 ```blade
@@ -87,7 +89,7 @@ Output:
 
 ### @style
 
-Create a ```<style>``` element or ```<link>``` element with a css path.
+Create a `<style>` element or `<link>` element with a css path.
 
 ```blade
 @style
@@ -100,7 +102,7 @@ Create a ```<style>``` element or ```<link>``` element with a css path.
 
 ### @script
 
-Create a ```<script>``` element with or without a js path.
+Create a `<script>` element with or without a js path.
 
 ```blade
 @script
@@ -118,7 +120,6 @@ Load the contents of a css or js file inline in your view.
 ```blade
 @inline('/js/manifest.js')
 ```
-
 
 ### @pushonce
 
@@ -219,12 +220,43 @@ Output data-attributes from an array.
 
 ### @haserror
 
-Quickly output for classical  ```$errors->has('input_name')``` to determine if any error messages exist for a given field.
+Quickly output for classical `$errors->has('input_name')` to determine if any error messages exist for a given field.
 
 ```blade
 @haserror('input_name')
     This input has an error
 @endhaserror
+```
+
+### @count
+
+Output number of entries.
+
+```blade
+@count([1,2,3])
+```
+
+### @nl2br
+
+Replaces `\n` into `<br>`.
+
+```blade
+@nl2br('foo\n bar\n baz\n')
+```
+
+### @snake, @kebab, @camel
+
+Output formatted string (uses Laravel Helpers).
+
+```blade
+@snake('fooBar')
+// output: 'foo_bar'
+
+@kebab('fooBar')
+// output: 'foo-bar'
+
+@camel('foo bar')
+// output: 'fooBar'
 ```
 
 ## Testing
