@@ -1,7 +1,8 @@
 <?php
 
-use Appstract\BladeDirectives\Parser;
 use Illuminate\Support\Str;
+use Appstract\BladeDirectives\Parser;
+use Illuminate\Database\Eloquent\Collection;
 
 return [
 
@@ -399,4 +400,44 @@ return [
         return '<?php endif; ?>';
     },
 
+    /*
+    |---------------------------------------------------------------------
+    | @count
+    |---------------------------------------------------------------------
+    |
+    | Usage: @count([1,2,3])
+    |
+    */
+
+    'count' => function ($expression) {
+        return '<?php echo ' . count(json_decode($expression)) . '; ?>';
+    },
+
+    /*
+    |---------------------------------------------------------------------
+    | @nl2br
+    |---------------------------------------------------------------------
+    */
+
+    'nl2br' => function ($expression) {
+        return "<?php echo nl2br($expression); ?>";
+    },
+
+    /*
+    |---------------------------------------------------------------------
+    | @kebab, @snake, @camel
+    |---------------------------------------------------------------------
+    */
+
+    'kebab' => function ($expression) {
+        return '<?php echo ' . Str::kebab($expression) . '; ?>';
+    },
+
+    'snake' => function ($expression) {
+        return '<?php echo ' . Str::snake($expression) . '; ?>';
+    },
+
+    'camel' => function ($expression) {
+        return '<?php echo ' . Str::camel($expression) . '; ?>';
+    },
 ];
