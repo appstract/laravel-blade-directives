@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Str;
 use Appstract\BladeDirectives\Parser;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 
 return [
 
@@ -410,7 +409,7 @@ return [
     */
 
     'count' => function ($expression) {
-        return '<?php echo ' . count(json_decode($expression)) . '; ?>';
+        return '<?php echo '.count(json_decode($expression)).'; ?>';
     },
 
     /*
@@ -430,14 +429,14 @@ return [
     */
 
     'kebab' => function ($expression) {
-        return '<?php echo ' . Str::kebab($expression) . '; ?>';
+        return '<?php echo '.Str::kebab($expression).'; ?>';
     },
 
     'snake' => function ($expression) {
-        return '<?php echo ' . Str::snake($expression) . '; ?>';
+        return '<?php echo '.Str::snake($expression).'; ?>';
     },
 
     'camel' => function ($expression) {
-        return '<?php echo ' . Str::camel($expression) . '; ?>';
+        return '<?php echo '.Str::camel($expression).'; ?>';
     },
 ];
